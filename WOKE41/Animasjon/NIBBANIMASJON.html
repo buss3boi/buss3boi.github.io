@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NIBERANIMASJN</title>
+    <style>
+
+        @keyframes zoomdawg{
+            from{
+                transform: scale(15);
+                opacity: 0;
+            }
+            to{
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+
+        body{
+            background-color: darkorchid;
+        }
+
+        h1{
+            font-size:72px;
+            color: whitesmoke;
+            text-align:center;
+            animation: zoomdawg 4s ease-out forwards;
+        }
+
+        #tekst1{
+            animation-delay:0s;
+        }
+        #tekst2{
+            opacity: 0;
+            animation-delay: 750ms;
+        }
+    </style>
+</head>
+<body>
+
+
+    <h1 id="tekst1">Negre</h1>
+    <h1 id="tekst2">N NIBBERINOS</h1>
+
+</body>
+</html>
