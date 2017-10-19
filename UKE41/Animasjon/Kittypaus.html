@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiddytiddy</title>
+    <style>
+
+        @keyframes catwalk{
+            from{
+                background-position: 0, -2280px;
+            }
+        }
+
+       <!--@keyframes rightMovement {
+            to{
+                transform: translateX(800px)
+            }
+        }-->
+
+        .katt{
+            position: absolute;
+            background-image: url("../bilder/sprite_catwalk.png");
+            width: 400px;
+            height: 190px;
+
+            animation: catwalk 4s steps(12) infinite;
+
+            <!--animation-name: catwalk;
+            animation-timing-function: steps(12);
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;-->
+
+
+
+        }
+
+    </style>
+</head>
+<body>
+
+   <div class="katt"></div>
+
+
+
+</body>
+</html>
+
+

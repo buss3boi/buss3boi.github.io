@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lemming</title>
+
+    <style>
+
+        @keyframes walkright{
+            to{
+                background-position: -256px 0;
+            }
+        }
+
+        @keyframes snoopyg{
+            from{
+                right: 0;
+            }
+
+            to{
+                left: 128px;
+            }
+        }
+        @keyframes parachute{
+            from{
+                top: 168px;
+                left: 128px;
+            }
+            to{
+                top: 428px;
+                left: 128px;
+            }
+        }
+
+        #game{
+            overflow: hidden;
+            position: relative;
+            width: 600px;
+            height: 450px;
+            margin: 30px auto;
+            background-color: black;
+            border: 15px solid peru;
+        }
+        #game > * {
+            position: absolute;
+        }
+        #gulv{
+            position: absolute;
+            top: 200px;
+            left: 0;
+            width: 128px;
+            height: 15px;
+            background-color: peru;
+        }
+
+        .parachute{
+            background-image: url("../bilder/lemming_float_l.gif");
+            width: 32px;
+            height: 32px;
+            animation: walkright 1s steps(8) infinite;
+        }
+
+        .walkright{
+            background-image: url("../bilder/lemming_walk_r.gif");
+            width: 32px;
+            height: 32px;
+            animation: walkright 1s steps(8) infinite;
+        }
+
+        #snoopyg{
+            width: 32px;
+            height: 32px;
+            top: 168px;
+            left: -100px;
+            animation: snoopyg 5s steps(32);
+        }
+
+        #snoopyg_tryner{
+            width: 32px;
+            height: 32px;
+            top: 168px;
+            left: -100px;
+            animation: parachute 5s 5s /*siste tid er delay*/ steps(32);
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div id="game">
+        <div id="snoopyg">
+            <div class="walkright"></div>
+        </div>
+        <div id="snoopyg_tryner">
+            <div class="parachute"></div>
+        </div>
+
+        <div id="gulv"></div>
+    </div>
+
+
+
+
+</body>
+</html>
