@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Destiny 2 Strikes</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+    <style>
+
+
+        *{
+            margin: 0;
+        }
+
+        body{
+            margin: 0;
+            background-color: #eeeeee;
+            font-family: Lato, serif;
+            color: slategray;
+        }
+
+        h1{
+            margin-bottom: 16px;
+            font-size: 58px;
+            margin-top: 52px;
+            text-align: center;
+            color: black;
+            text-transform: uppercase;
+        }
+
+        main{
+            max-width: 970px;
+            overflow: hidden;
+            min-height: 90vh;
+            margin: 0 auto;
+            width: 70%;
+        }
+
+        /*Slik skal innholdet se ut */
+
+        main > .Strikelist {
+            font-size: 18px;
+            width: 46%;
+            margin-right: 2%;
+            margin-left: 2%;
+            color: black;
+            float: left;
+            margin-bottom: 64px;
+        }
+
+
+
+        .Strikelist > img {
+            max-width: 100%;
+            height: auto;
+            padding-bottom: 16px;
+
+        }
+
+        main > #Strikeinfo{
+            font-size: 20px;
+            padding: 16px;
+            padding-bottom: 84px;
+            color: black;
+            line-height: 1.25;
+
+        }
+
+        /*Destiny logo*/
+        header > nav > a > img{
+            max-width: 300px;
+            min-width: 300px;
+            padding-top: 12px;
+            width:20%;
+
+        }
+
+        header > nav > a{
+            margin-left: 41.5%;
+        }
+
+        body > header {
+            background-color: whitesmoke;
+            filter: drop-shadow( 5px 5px 5px blue);
+
+        }
+
+
+
+
+
+        body > footer{
+            padding-top: 8px;
+            padding-bottom: 8px;
+            display: grid;
+            grid-gap: 20px;
+            grid-auto-flow: column;
+            text-align: center;
+            background-color: whitesmoke;
+        }
+
+        /*checkox texkst*/
+
+
+        body > header > #meny > a {
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            color: #222222;
+            padding-top: 16px;
+            padding-bottom: 16px;
+            font-size: 20px;
+            padding-right: 70px;
+        }
+        #meny > a:last-child{
+            margin-bottom: 24px;
+        }
+
+        body > header > #meny {
+            display: grid;
+            grid-auto-flow: row;
+            grid-template-rows: repeat(5, 1fr); /*246px originalt*/
+            padding-top: 16px;
+            padding-bottom: 16px;
+        }
+
+        #meny > a:hover{
+            /*background-color: blue;*/
+            /*opacity: 0.625;*/
+            color: slategray;
+            transition: 0.25s;
+        }
+
+
+        /*Her begynner Checkbox instillinger*/
+
+        #mat{
+            display: grid;
+            cursor: pointer;
+            width: 16px;
+            height: 16px;
+            align-content: space-between;
+            padding-left: 12px;
+            padding-bottom: 12px;
+        }
+        #mat > div {
+            height: 2px;
+            background-color: black;
+        }
+
+        #meny{
+            background-color: snow;
+            position: absolute;
+            width: 300px;
+            min-height: calc(100vh - 64px);
+            left: -308px;
+            top: 120px;
+            transition: 0.3s;
+        }
+        #cb:checked ~ #meny {
+            left: 0;
+
+        }
+
+        #mat > div{
+            transition: 0.1s;
+        }
+
+        #cb:checked ~ #mat > div:first-child{
+            transform: translateY(7px) rotate(-45deg);
+        }
+
+        #cb:checked ~ #mat > div:nth-child(2){
+            opacity:0
+        }
+
+
+        #cb:checked ~ #mat > div:last-child{
+            transform: translateY(-7px) rotate(45deg);
+        }
+
+        #cb{
+            display: none;
+        }
+
+        @media(max-width: 1192px) {
+
+            header > nav > a {
+                margin-left: 35%;
+            }
+
+            main {
+                width: 90%;
+                min-height: 100px;
+            }
+        }
+
+        @media(max-width: 480px) {
+
+            header > nav > a{
+                margin-left: 27.5%;
+            }
+
+            header > nav > a > img{
+                max-width: 0;
+                min-width: 225px;
+                padding-top: 16px;
+                width: 20%;
+            }
+
+            main > .Strikelist {
+                font-size: 18px;
+                width: 90%;
+                margin-right: 5%;
+                margin-left: 5%;
+                color: black;
+                float: left;
+                margin-bottom: 64px;
+            }
+
+            #meny {
+                background-color: snow;
+                position: absolute;
+                width: 300px;
+                min-height: calc(100vh - 64px);
+                left: -308px;
+                top: 102px;
+                transition: 0.3s;
+            }
+
+            main {
+                width: 100%;
+                min-height: 100px;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+
+
+    <header>
+        <nav>
+
+            <a href="NETTSIDE.html"><img src="bilder/Destiny2_Logo.png"></a>
+
+            <!--  <div class="MenyElementer">
+                  <div><a href="#">CLASSES</a></div>
+                  <div><a href="#">WEAPONS</a></div>
+                  <div><a href="#">ARMOUR</a></div>
+                  <div><a href="#">STRIKES</a></div>
+                  <div><a href="#">CRUICIBLE</a></div>
+
+              </div>-->
+        </nav>
+
+        <input type="checkbox" id="cb">
+        <label for="cb" id="mat">
+            <div></div>
+            <div></div>
+            <div></div>
+
+        </label>
+        <nav id="meny">
+            <a href="Classes.html">CLASSES</a>
+            <a href="#">WEAPONS</a>
+            <a href="#">ARMOUR</a>
+            <a href="Strikes.html">STRIKES</a>
+            <a href="#">CRUICIBLE</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <h1>Strikes</h1>
+
+        <p id="Strikeinfo"> In Strikes, you get specific missions to complete. In the missions you go through large fields,
+        dark woods, cold mountains and much more. In the end, there is a boss. This is a powerful enemy that will crave
+        tactics and coordination to eliminate. When you take down the boss, you have succsessfully finished the strike.
+        </p>
+
+        <div class="Strikelist">
+
+            <img src="bilder/Exodus.jpg" alt="">
+            <p>Featuring one of the trickiest boss encounters in the game, Exodus Crash is home to Fallen Captain
+                Thaviks the Departed. It’s quite the journey getting to him too. You’ll have to face off against a
+                Fallen Walker, survive against Servitors and defeat mobs in the darkness.</p>
+        </div>
+
+
+        <div class="Strikelist">
+
+            <img src="bilder/Inverted.jpg" alt="">
+            <p>Back during Destiny 2’s open beta days, this was the first Strike showcased by Bungie. What sets it
+                apart from every other Strike is the amount of platforming you’ll have to do, especially when you
+                reach its signature feature - the dreaded dig site. Guardians need to make their way to the boss room
+                by dodging enormous rotating drills and it’s quite a nerve-wracker.</p>
+        </div>
+
+
+        <div class="Strikelist">
+
+            <img src="bilder/Pyramidion.png" alt="">
+            <p>This is perhaps the most loved strike of all. The Pyramidion is a brilliant mixture of precarious
+                platforming and chaotic fights as you descend towards a fabled Vex lake. Visually, there’s a pretty
+                breathtaking moment where the Strike opens out into a complex array of endless Vex structures. This is
+                probably not the most challenging, but it is sure to stun you by its visuals.</p>
+        </div>
+
+
+        <div class="Strikelist">
+
+            <img src="bilder/Savathun-jpg.jpg" alt="">
+            <p>Deep in the heart of the Solarium lies a huge Hive Shrieker called the Dark Heart. To get there you’ll
+                have to navigate through an abundance of Hive infested corridors and a small network of caves. Expect
+                to be rushed down by Hive Thralls every few seconds and come up against fearsome Hive Ogres as well -
+                it’s far from the most pleasant Strikes. </p>
+        </div>
+
+
+        <div class="Strikelist">
+
+            <img src="bilder/Arms.jpg" alt="">
+            <p>For this Strike you’ll be infiltrating Bracus Zahn’s base of operations and - hopefully - dropping him
+                on sight. It’s far from easy though as there’s a number of sections where you’ve got no choice but to
+                get caught up in a major skirmish against a horde of Cabal enemies. Not to mention the two tanks as
+                well!</p>
+        </div>
+
+
+        <div class="Strikelist">
+
+            <img src="bilder/Lake.jpg" alt="">
+            <p>A PS4 exclusive Strike that opened up to everyone in December, the Lake of Shadows takes place in the
+                Taken riddled EDZ. You’ll be tasked with wiping out the Taken in their own backyard before winding your
+                way through a network of murky tunnels, defeating a number of Taken mini-bosses and taking on a massive
+                Phalanx called Grask.</p>
+        </div>
+
+
+    </main>
+
+    <footer>
+        <article>
+            <img src="bilder/Pikachu.png">
+            <p>Pikachu</p>
+        </article>
+
+        <article>
+            <img src="bilder/Eevee.png">
+            <p>Eevee</p>
+        </article>
+
+        <article>
+            <img src="bilder/Squirtle.png">
+            <p>Squirtle</p>
+        </article>
+
+    </footer>
+
+</body>
+</html>

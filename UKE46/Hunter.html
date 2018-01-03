@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Destiny 2 Hunter</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+    <style>
+
+
+        *{
+            margin: 0;
+        }
+
+        body{
+            margin: 0;
+            background-color: #eeeeee;
+            font-family: Lato, serif;
+            color: slategray;
+        }
+
+        h1{
+            margin-bottom: 16px;
+            font-size: 58px;
+            margin-top: 52px;
+            text-align: center;
+            color: black;
+            text-transform: uppercase;
+        }
+
+        main{
+            max-width: 970px;
+            overflow: hidden;
+            min-height: 90vh;
+            margin: 0 auto;
+            width: 70%;
+        }
+
+        /*Slik skal innholdet se ut */
+
+        main > .Guardian {
+            font-size: 18px;
+            width: 46%;
+            margin-right: 2%;
+            margin-left: 2%;
+            color: black;
+            float: left;
+            margin-bottom: 64px;
+        }
+
+
+
+        .Guardian > img {
+            max-width: 100%;
+            height: auto;
+            padding-bottom: 16px;
+
+        }
+
+        main > #Guardianinfo{
+            font-size: 20px;
+            padding: 16px;
+            padding-top: 32px;
+            padding-bottom: 84px;
+            color: black;
+            line-height: 1.25;
+            text-align: center;
+
+        }
+
+        /*Destiny logo*/
+        header > nav > a > img{
+            max-width: 300px;
+            min-width: 300px;
+            padding-top: 12px;
+            width:20%;
+
+        }
+
+        header > nav > a{
+            margin-left: 41.5%;
+        }
+
+        body > header {
+            background-color: whitesmoke;
+            filter: drop-shadow( 5px 5px 5px blue);
+
+        }
+
+
+
+
+
+        body > footer{
+            padding-top: 8px;
+            padding-bottom: 8px;
+            display: grid;
+            grid-gap: 20px;
+            grid-auto-flow: column;
+            text-align: center;
+            background-color: whitesmoke;
+        }
+
+        /*checkox texkst*/
+
+
+        body > header > #meny > a {
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            color: #222222;
+            padding-top: 16px;
+            padding-bottom: 16px;
+            font-size: 20px;
+            padding-right: 70px;
+        }
+        #meny > a:last-child{
+            margin-bottom: 24px;
+        }
+
+        body > header > #meny {
+            display: grid;
+            grid-auto-flow: row;
+            grid-template-rows: repeat(5, 1fr); /*246px originalt*/
+            padding-top: 16px;
+            padding-bottom: 16px;
+        }
+
+        #meny > a:hover{
+            /*background-color: blue;*/
+            /*opacity: 0.625;*/
+            color: slategray;
+            transition: 0.25s;
+        }
+
+
+        /*Her begynner Checkbox instillinger*/
+
+        #mat{
+            display: grid;
+            cursor: pointer;
+            width: 16px;
+            height: 16px;
+            align-content: space-between;
+            padding-left: 12px;
+            padding-bottom: 12px;
+        }
+        #mat > div {
+            height: 2px;
+            background-color: black;
+        }
+
+        #meny{
+            background-color: snow;
+            position: absolute;
+            width: 300px;
+            min-height: calc(100vh - 64px);
+            left: -308px;
+            top: 120px;
+            transition: 0.3s;
+        }
+        #cb:checked ~ #meny {
+            left: 0;
+
+        }
+
+        #mat > div{
+            transition: 0.1s;
+        }
+
+        #cb:checked ~ #mat > div:first-child{
+            transform: translateY(7px) rotate(-45deg);
+        }
+
+        #cb:checked ~ #mat > div:nth-child(2){
+            opacity:0
+        }
+
+
+        #cb:checked ~ #mat > div:last-child{
+            transform: translateY(-7px) rotate(45deg);
+        }
+
+        #cb{
+            display: none;
+        }
+
+        @media(max-width: 1192px) {
+
+            header > nav > a {
+                margin-left: 35%;
+            }
+
+            main {
+                width: 90%;
+                min-height: 100px;
+            }
+        }
+
+        @media(max-width: 480px) {
+
+            header > nav > a{
+                margin-left: 27.5%;
+            }
+
+            header > nav > a > img{
+                max-width: 0;
+                min-width: 225px;
+                padding-top: 16px;
+                width: 20%;
+            }
+
+            main > .Guardian {
+                font-size: 18px;
+                width: 90%;
+                margin-right: 5%;
+                margin-left: 5%;
+                color: black;
+                float: left;
+                margin-bottom: 64px;
+            }
+
+            #meny {
+                background-color: snow;
+                position: absolute;
+                width: 300px;
+                min-height: calc(100vh - 64px);
+                left: -308px;
+                top: 102px;
+                transition: 0.3s;
+            }
+
+            main {
+                width: 100%;
+                min-height: 100px;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+
+
+<header>
+    <nav>
+
+        <a href="NETTSIDE.html"><img src="bilder/Destiny2_Logo.png"></a>
+
+        <!--  <div class="MenyElementer">
+              <div><a href="#">CLASSES</a></div>
+              <div><a href="#">WEAPONS</a></div>
+              <div><a href="#">ARMOUR</a></div>
+              <div><a href="#">STRIKES</a></div>
+              <div><a href="#">CRUICIBLE</a></div>
+
+          </div>-->
+    </nav>
+
+    <input type="checkbox" id="cb">
+    <label for="cb" id="mat">
+        <div></div>
+        <div></div>
+        <div></div>
+
+    </label>
+    <nav id="meny">
+        <a href="Classes.html">CLASSES</a>
+        <a href="#">WEAPONS</a>
+        <a href="#">ARMOUR</a>
+        <a href="Strikes.html">STRIKES</a>
+        <a href="#">CRUICIBLE</a>
+    </nav>
+</header>
+
+<main>
+
+    <h1>Hunter</h1>
+
+    <p id="Guardianinfo"> <i>Bring the pain</i> </p>
+
+    <div class="Guardian">
+
+        <img src="bilder_guardians/Cayde.jpg" alt="">
+        <p>The Hunter dives the enemy and deals high damage while being a confusion. This helps you eliminate them, or
+        let your team put them down. Your dodge ability can either recharge your melee ability or reload your weapon.
+        Cayde 6 is a enjoyable exo character, and the mentor of the Hunters.</p>
+    </div>
+
+
+    <div class="Guardian">
+
+        <img src="bilder_guardians/Arcstrider.jpg" alt="">
+        <p>Arcstrider is a close combat alternative for the Hunter. It equips the Hunter with the Arc Staff. This is
+        a staff empowered by Arc energy. This staff does not hit as hard as the Sentinels Sentinel Shield, but you can
+        attack much faster with this weapon. To many, it resembles a bo-staff. A quick and effective weapon for melee
+        combat, but as well as in real life, this weapon craves skill.</p>
+    </div>
+
+
+    <div class="Guardian">
+
+        <img src="bilder_guardians/Nightstalker.png" alt="">
+        <p>The Nightstalker gives you the oportunity to become the archer superhero you always see on
+        TV! The Hunters void subclass lets you equip a bow out of void energy. This super is called the Shadowshot.
+        This lets you shoot arrows at your enemies. It does not deal any damage, but enemies hit are put in stasis for 5
+        seconds. Targets are not able to look where they wish, and they cannot move or use any abilities either.</p>
+    </div>
+
+
+    <div class="Guardian">
+
+        <img src="bilder_guardians/Gunslinger.jpg" alt="">
+        <p>This is perhaps the Hunters only real pure bad ass subclass. The Gunslinger lets you equip the Golden Gun.
+        This is a revolver, ully loaded with solar imbued bullets. A standard six shooter, but with bullets capable of
+        tearing even the strongest opponents down. Even guardians can barely take more than one of these solar bullets.  </p>
+    </div>
+
+
+
+</main>
+
+<footer>
+    <article>
+        <img src="bilder/Pikachu.png">
+        <p>Pikachu</p>
+    </article>
+
+    <article>
+        <img src="bilder/Eevee.png">
+        <p>Eevee</p>
+    </article>
+
+    <article>
+        <img src="bilder/Squirtle.png">
+        <p>Squirtle</p>
+    </article>
+
+</footer>
+
+</body>
+</html>
