@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hellig Nettside</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+    <style>
+
+
+        *{
+            margin: 0;
+        }
+
+        body{
+            margin: 0;
+            background-color: #eeeeee;
+            font-family: Lato, Serif;
+            color: slategray;
+        }
+
+        h1{
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        main{
+            max-width: 970px;
+            overflow: hidden;
+            min-height: 100vh;
+            margin: 0 auto;
+            background-color: #f9f9f9;
+            width: 70%;
+        }
+
+
+        .Sliders{
+            width: 300%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            transition: 0.2s;
+
+
+        }
+
+        .Sliders > div {
+
+            text-align: center;
+        }
+
+        .Sliders > div > a > img{
+            max-width: 100vh;
+            max-height: 600px;
+            /*width:100%;*/
+            min-width: 100px;
+            user-select: none;
+            padding: 16px;
+        }
+
+
+        /*Destiny logo*/
+        header > nav > a > img{
+            max-width: 300px;
+            min-width: 300px;
+            padding-top: 12px;
+            width:20%;
+
+        }
+
+        header > nav > a{
+            margin-left: 41.5%;
+        }
+
+        body > header {
+            background-color: whitesmoke;
+            filter: drop-shadow( 5px 5px 5px blue);
+
+        }
+
+
+
+
+
+        body > footer{
+            padding-top: 8px;
+            padding-bottom: 8px;
+            display: grid;
+            grid-gap: 20px;
+            grid-auto-flow: column;
+            text-align: center;
+            background-color: whitesmoke;
+        }
+
+        /*checkox texkst*/
+
+
+        body > header > #meny > a {
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            color: #222222;
+            padding-top: 16px;
+            padding-bottom: 16px;
+            font-size: 20px;
+            padding-right: 70px;
+        }
+        #meny > a:last-child{
+            margin-bottom: 24px;
+        }
+
+        body > header > #meny {
+                display: grid;
+                grid-auto-flow: row;
+                grid-template-rows: repeat(5, 1fr); /*246px originalt*/
+                padding-top: 16px;
+                padding-bottom: 16px;
+            }
+
+        #meny > a:hover{
+            /*background-color: blue;*/
+            /*opacity: 0.625;*/
+            color: slategray;
+            transition: 0.25s;
+        }
+
+        /*Her begynner Checkbox instillinger*/
+
+        #mat{
+            display: grid;
+            cursor: pointer;
+            width: 16px;
+            height: 16px;
+            align-content: space-between;
+            padding-left: 12px;
+            padding-bottom: 12px;
+        }
+        #mat > div {
+            height: 2px;
+            background-color: black;
+        }
+
+
+        #meny{
+            background-color: snow;
+            position: absolute;
+            width: 300px;
+            min-height: calc(100vh - 64px);
+            left: -308px;
+            top: 120px;
+            transition: 0.3s;
+        }
+        #cb:checked ~ #meny {
+            left: 0;
+
+        }
+
+        #mat > div{
+            transition: 0.1s;
+        }
+
+        #cb:checked ~ #mat > div:first-child{
+            transform: translateY(7px) rotate(-45deg);
+        }
+
+        #cb:checked ~ #mat > div:nth-child(2){
+            opacity:0
+        }
+
+
+        #cb:checked ~ #mat > div:last-child{
+            transform: translateY(-7px) rotate(45deg);
+        }
+
+        #cb{
+            display: none;
+        }
+
+
+        @media(max-width: 1192px) {
+
+
+            header > nav > a{
+                margin-left: 35%;
+            }
+
+            main{
+                width: 90%;
+                min-height: 100px;
+            }
+
+
+            .Sliders > div > a > img {
+                max-width: 90%;
+                max-height: 600px;
+                /*width:100%;*/
+                /*min-width: 100px;*/
+                user-select: none;
+                padding: 16px;
+            }
+
+        }
+
+
+        @media(max-width: 480px) {
+
+            header > nav > a{
+                margin-left: 27.5%;
+            }
+
+            header > nav > a > img{
+                max-width: 0;
+                min-width: 225px;
+                padding-top: 16px;
+                width: 20%;
+            }
+
+            #meny {
+                background-color: snow;
+                position: absolute;
+                width: 300px;
+                min-height: calc(100vh - 64px);
+                left: -308px;
+                top: 104px;
+                transition: 0.3s;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+
+
+<header>
+    <nav>
+
+        <a href="NETTSIDE.html"><img src="bilder/Destiny2_Logo.png"></a>
+
+      <!--  <div class="MenyElementer">
+            <div><a href="#">CLASSES</a></div>
+            <div><a href="#">WEAPONS</a></div>
+            <div><a href="#">ARMOUR</a></div>
+            <div><a href="#">STRIKES</a></div>
+            <div><a href="#">CRUICIBLE</a></div>
+
+        </div>-->
+    </nav>
+
+    <input type="checkbox" id="cb">
+    <label for="cb" id="mat">
+        <div></div>
+        <div></div>
+        <div></div>
+
+    </label>
+    <nav id="meny">
+        <a href="Classes.html">CLASSES</a>
+        <a href="#">WEAPONS</a>
+        <a href="#">ARMOUR</a>
+        <a href="Strikes.html">STRIKES</a>
+        <a href="#">CRUICIBLE</a>
+    </nav>
+</header>
+
+
+
+
+
+<main>
+
+
+    <div class="Sliders">
+        <div><a href="Titan.html"><img src="bilder/Titan_Icon.png"></a></div>
+        <div><a href="Warlock.html"><img src="bilder/Warlock_Icon.png"></a></div>
+        <div><a href="Hunter.html"><img src="bilder/Hunter_Icon.png"></a></div>
+
+
+    </div>
+
+
+</main>
+
+    <footer>
+        <article>
+            <img src="bilder/Pikachu.png">
+            <p>Pikachu</p>
+        </article>
+
+        <article>
+            <img src="bilder/Eevee.png">
+            <p>Eevee</p>
+        </article>
+
+        <article>
+            <img src="bilder/Squirtle.png">
+            <p>Squirtle</p>
+        </article>
+
+    </footer>
+
+
+<script>
+    let Sliders = document.querySelector(".Sliders");
+
+    let marg= 0;
+
+    document.onclick = function (klikkerino) {
+
+
+        if(klikkerino.clientX > innerWidth / 2){
+            if(marg > -200){
+                marg = marg - 100;
+            } else{
+                Sliders.animate([
+                    {transform: "translateX(20px;"},
+                    {transform: "translateX(0px;"},
+                    {transform: "translateX(10px;"},
+                    {transform: "translateX(0px;"}
+                ],{
+                    duration : 200
+                })
+            }
+
+        } else{
+
+            if(marg < 0){
+                marg = marg + 100;
+            } else{
+                slides.animate([
+                    {transform: "translateX(-20px;)"},
+                    {transform: "translateX(0;)"},
+                    {transform: "translateX(-10px;)"},
+                    {transform: "translateX(0;)"}
+                ], {
+                    duration: 200
+                });
+            }
+
+        }
+
+        Sliders.style.marginLeft = marg + "%";
+    };
+
+
+</script>
+
+
+
+</body>
+</html>
