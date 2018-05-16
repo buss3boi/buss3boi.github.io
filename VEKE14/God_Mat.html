@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>God Mat</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,600" rel="stylesheet">
+    <style>
+
+
+        /*General*/
+
+        *{
+            margin: 0;
+        }
+
+        body{
+            margin: 0;
+            background-color: #eeeeee;
+            font-family: 'Dosis', sans-serif;
+            /*color: lightgreen; */
+        }
+
+        h1{
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+
+
+        main{
+            overflow: hidden;
+            margin: 0 auto;
+            background-color: #f9f9f9;
+            width: 80%;
+            min-height: 100vh;
+        }
+
+        /*Sliders.*/
+
+
+
+        .Sliders{
+            width: 400%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            transition: 0.2s;
+            padding-bottom: 116px;
+
+
+        }
+
+        .Sliders > div {
+
+            text-align: center;
+        }
+
+        .Sliders > div > a > img{
+            max-width: 100%;
+            max-height: 600px;
+            /*width:100%;*/
+            min-width: 100px;
+            user-select: none;
+
+        }
+
+
+
+        /*Logo*/
+        header > nav > article > a > img{
+            max-width: 100px;
+            padding-top: 12px;
+            width:20%;
+
+        }
+
+        header > nav > article {
+            margin-left: 42.5%;
+        }
+
+        header > nav > article >  a {
+
+            text-decoration: none;
+            color: inherit;
+            font-size: 32px;
+        }
+
+        header{
+            background-color: #f9f9f9;
+        }
+
+        /*Matutvalg*/
+
+
+
+
+
+
+
+
+        /*Fot*/
+
+
+        body > footer{
+            padding-top: 8px;
+            padding-bottom: 8px;
+            display: grid;
+            grid-gap: 20px;
+            grid-auto-flow: column;
+            text-align: center;
+            background-color: whitesmoke;
+        }
+
+        footer > article > p{
+            font-size: 24px;
+        }
+
+
+        /*checkox texkst*/
+
+
+        body > header > #meny > button {
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            color: #222222;
+            font-family: 'Dosis', sans-serif;
+            padding-top: 16px;
+            padding-bottom: 16px;
+            font-size: 20px;
+            padding-right: 70px;
+        }
+        #meny > a:last-child{
+            margin-bottom: 24px;
+        }
+
+        body > header > #meny {
+            display: grid;
+            grid-auto-flow: row;
+            grid-template-rows: repeat(5, 1fr); /*246px originalt*/
+            padding-top: 16px;
+            padding-bottom: 16px;
+        }
+
+        #meny > a:hover{
+
+            color: lightgray;
+            transition: 0.25s;
+        }
+
+
+
+        /*Checkbox instillinger*/
+
+        #mat{
+            display: grid;
+            cursor: pointer;
+            width: 16px;
+            height: 16px;
+            align-content: space-between;
+            padding-left: 12px;
+            padding-bottom: 12px;
+        }
+        #mat > div {
+            height: 2px;
+            background-color: black;
+        }
+
+
+        #meny{
+            background-color: snow;
+            position: absolute;
+            width: 300px;
+            min-height: calc(100vh - 154px);
+            left: -308px;
+            top: 100px;
+            transition: 0.3s;
+        }
+        #cb:checked ~ #meny {
+            left: 0;
+
+        }
+
+        #mat > div{
+            transition: 0.1s;
+        }
+
+        #cb:checked ~ #mat > div:first-child{
+            transform: translateY(7px) rotate(-45deg);
+        }
+
+        #cb:checked ~ #mat > div:nth-child(2){
+            opacity:0
+        }
+
+
+        #cb:checked ~ #mat > div:last-child{
+            transform: translateY(-7px) rotate(45deg);
+        }
+
+        #cb{
+            display: none;
+        }
+
+
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+
+
+            <article>
+                <a href=""><img src="bilderavannet/God_Mat.png">GOD MAT</a>
+            </article>
+
+
+
+
+
+
+        </nav>
+
+        <input type="checkbox" id="cb">
+        <label for="cb" id="mat">
+            <div></div>
+            <div></div>
+            <div></div>
+
+        </label>
+        <nav id="meny">
+            <button onclick="visAlleVarer()">Meny</button>
+            <button onclick="visVare()">Sunt</button>
+            <button>Vegetar</button>
+            <button>Bestilling</button>
+            <button>Tilbakestill Bestilling</button>
+        </nav>
+    </header>
+
+
+    <main>
+
+
+        <div class="Sliders">
+            <div><a href=""><img src="bilderavannet/Real11.jpg"></a></div>
+            <div><a href=""><img src="bilderavannet/Real2.jpg"></a></div>
+            <div><a href=""><img src="bilderavannet/Real3.jpg"></a></div>
+            <div><a href=""><img src="bilderavannet/Real4r.jpg"></a></div>
+
+
+        </div>
+
+
+
+
+    <!-- Her skal produktene vises-->
+
+
+        <div id="alleVarer"></div>
+
+
+
+    </main>
+
+
+    <footer>
+        <article>
+            <a href=""><img src=""></a> <p>Kontakt oss</p>
+        </article>
+
+        <article>
+            <a href=""><img src=""></a> <p>Stillinger</p>
+        </article>
+
+        <article>
+            <a href=""><img src=""></a> <p>Vanlige Spørsmål</p>
+        </article>
+
+    </footer>
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyC05Asp2auLp_DKq4R6omxvJO5xsJQcdqw",
+            authDomain: "my-decent-project-6d912.firebaseapp.com",
+            databaseURL: "https://my-decent-project-6d912.firebaseio.com",
+            projectId: "my-decent-project-6d912",
+            storageBucket: "my-decent-project-6d912.appspot.com",
+            messagingSenderId: "1049459147850"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+
+
+    <!--Map JSON to OUTPUT-->
+
+
+    <script>
+
+        const db = firebase.database();
+
+        const alleVarer = document.getElementById("alleVarer");
+        const matretter = db.ref("Varer/matretter");
+
+
+        function visVare(snapshot){
+
+            const matrett = snapshot.val();
+            alleVarer.innerHTML += `
+
+                <div>
+                    <article id="dasEssen">
+                        <img src="${matrett.bilde}" alt="">
+                        <h1>${matrett.navn}</h1>
+                    </article>
+
+                </div>
+            `;
+
+
+            /*alleVarer.innerHTML = div + vare.innerHTML;*/
+
+        }
+
+
+
+
+        function visAlleVarer() {
+            matretter.on("child_added", visVare);
+        }
+
+
+        visAlleVarer();
+
+    </script>
+
+
+
+    <!--Gir sliders en funksjon-->
+
+    <script>
+        let Sliders = document.querySelector(".Sliders");
+
+        let marg= 0;
+
+        document.onclick = function (klikkerino) {
+
+
+            if(klikkerino.clientX > innerWidth / 2){
+                if(marg > -300){
+                    marg = marg - 100;
+                } else{
+                    Sliders.animate([
+                        {transform: "translateX(20px;"},
+                        {transform: "translateX(0px;"},
+                        {transform: "translateX(10px;"},
+                        {transform: "translateX(0px;"}
+                    ],{
+                        duration : 200
+                    })
+                }
+
+            } else{
+
+                if(marg < 0){
+                    marg = marg + 100;
+                } else{
+                    slides.animate([
+                        {transform: "translateX(-20px;)"},
+                        {transform: "translateX(0;)"},
+                        {transform: "translateX(-10px;)"},
+                        {transform: "translateX(0;)"}
+                    ], {
+                        duration: 200
+                    });
+                }
+
+            }
+
+            Sliders.style.marginLeft = marg + "%";
+        };
+    </script>
+
+
+
+
+    <!--Importerer Json-->
+
+
+
+</body>
+
+
+</html>

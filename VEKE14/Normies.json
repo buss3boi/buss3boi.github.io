@@ -1,0 +1,263 @@
+{
+  "varer": {
+
+    "matretter": {
+
+      "001": {
+        "navn": "Avokado Bønne Salat",
+        "type": "Salat",
+        "vegetarian": true,
+        "ingredienser": [
+          "Avokado",
+          "Bønner",
+          "Tomat",
+          "Mais"
+        ],
+        "sunn": true,
+        "bilde": "Avocado-Bean-Salad.jpg",
+        "pris": 69
+      },
+
+      "002": {
+        "navn": "Rundstykke m. Egg og Avokado",
+        "type": "Sandwich",
+        "vegetarian": true,
+        "ingredienser": [
+          "Rundstykke",
+          "Avokado",
+          "Egg",
+          "Tomat",
+          "Pepper"
+        ],
+        "sunn": true,
+        "bilde": "Avocado-egg-baguette.jpg",
+        "pris": 47
+      },
+
+      "003": {
+        "navn": "Brokkoli Suppe",
+        "type": "Suppe",
+        "vegetarian": true,
+        "ingredienser": [
+          "Fløte",
+          "Brokkoli",
+          "Ost",
+          "Pepper",
+          "Salt"
+        ],
+        "sunn": false,
+        "bilde": "Broccoli-Cheese-Soup.jpg",
+        "pris": 59
+      },
+
+      "004": {
+        "navn": "Kylling Burrito",
+        "type": "Burrito",
+        "vegetarian": false,
+        "ingredienser": [
+          "Kylling",
+          "Tortilla",
+          "Avokado",
+          "Tomat",
+          "Løk",
+          "Egg",
+          "Rapsolje",
+          "Pepper"
+        ],
+        "sunn": true,
+        "bilde": "Chicken-burrito.jpg",
+        "pris": 72
+      },
+      "005": {
+        "navn": "Farfalle Salat",
+        "type": "Salat",
+        "vegetarian": true,
+        "ingredienser": [
+          "Farfalle",
+          "Tomat",
+          "Spinat",
+          "Fetaost",
+          "Salt",
+          "Pepper"
+        ],
+        "sunn": true,
+        "bilde": "Farfalle-salat.jpg",
+        "pris": 49
+      },
+
+      "006": {
+        "navn": "Grillet Kylling m. Sommer Salat",
+        "type": "Grill",
+        "vegetarian": false,
+        "ingredienser": [
+          "Kylling",
+          "Salat"
+        ],
+        "sunn": true,
+        "bilde": "Grilled-chicken.jpg",
+        "pris": 79
+      },
+
+      "007": {
+        "navn": "Rekesalat",
+        "type": "Salat",
+        "vegetarian": false,
+        "ingredienser": [
+          "Reker",
+          "Penne Pasta",
+          "Spinat",
+          "Paprika"
+        ],
+        "sunn": true,
+        "bilde": "healthy-Tomato-Spinach-Shrimp-Pasta.jpg",
+        "pris": 65
+      },
+
+      "008": {
+        "navn": "Mozzarella Tomat Pizza",
+        "type": "Pizza",
+        "vegetarian": true,
+        "ingredienser": [
+          "Tomat",
+          "Mozarella",
+          "Basilikum",
+          "Oregano"
+        ],
+        "sunn": true,
+        "bilde": "Mozarella-tomato-pizza.jpg",
+        "pris": 85
+      },
+
+      "009": {
+        "navn": "Pulled Pork Taco",
+        "type": "Taco",
+        "vegetarian": false,
+        "ingredienser": [
+          "Tortilla",
+          "Løk",
+          "Svin",
+          "persille"
+        ],
+        "sunn": true,
+        "bilde": "pork-salad-wrap.jpg",
+        "pris": 99
+      },
+
+      "010": {
+        "navn": "Quesedillas",
+        "type": "Taco",
+        "vegetarian": false,
+        "ingredienser": [
+          "Tortilla",
+          "Paprika",
+          "Kylling",
+          "Tomat",
+          "Curry",
+          "Chilli"
+        ],
+        "sunn": true,
+        "bilde": "Quesedilla.jpg",
+        "pris": 69
+      },
+
+      "011": {
+        "navn": "Spinat Pasta",
+        "type": "Pasta",
+        "vegetarian": false,
+        "ingredienser": [
+          "Kylling",
+          "Fløte",
+          "Spinat",
+          "Tagliatelle",
+          "Salt"
+        ],
+        "sunn": true,
+        "bilde": "Spinach-pasta.jpg",
+        "pris": 89
+      },
+
+      "012": {
+        "navn": "Biff Lapskaus",
+        "type": "Lapskaus",
+        "vegetarian": false,
+        "ingredienser": [
+          "Biff",
+          "Sky",
+          "Fløte",
+          "Erter",
+          "Gulrøtter"
+        ],
+        "sunn": true,
+        "bilde": "beef_stew.jpg",
+        "pris": 119
+      },
+
+      "013": {
+        "navn": "Doner Kebab",
+        "type": "Kebab",
+        "vegetarian": false,
+        "ingredienser": [
+          "Pita",
+          "Salat",
+          "Kylling",
+          "Tomat",
+          "Majones"
+        ],
+        "sunn": true,
+        "bilde": "Easy-Healthy-Air-Fryer-Doner-Kebabs.jpg",
+        "pris": 86
+      },
+
+      "014": {
+        "navn": "Lamb Kebab",
+        "type": "Kebab",
+        "vegetarian": false,
+        "ingredienser": [
+          "Lam",
+          "Fetaost",
+          "Pita",
+          "Salat",
+          "Tomat",
+          "Løk",
+          "Tzatziki"
+        ],
+        "sunn": true,
+        "bilde": "lambkebabtatzikigang.jpg",
+        "pris": 99
+      },
+
+      "015": {
+        "navn": "Kalkun-Cheddar Sandwich",
+        "type": "Sandwich",
+        "vegetarian": false,
+        "ingredienser": [
+          "Spesialloff",
+          "Cheddar",
+          "Kalkun",
+          "Ruccola",
+          "Skinke"
+        ],
+        "sunn": true,
+        "bilde": "Turkey-cheddar.jpg",
+        "pris": 73
+      },
+
+      "016": {
+        "navn": "Wok de Pollo",
+        "type": "Wok",
+        "vegetarian": false,
+        "ingredienser": [
+          "Kylling",
+          "Paprika",
+          "Bønnespirer",
+          "Sweet'N Sour",
+          "Terryaki",
+          "Chilli"
+        ],
+        "sunn": true,
+        "bilde": "wok-de-pollo.jpg",
+        "pris": 109
+      }
+    }
+  }
+}
