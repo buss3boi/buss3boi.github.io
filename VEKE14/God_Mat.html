@@ -168,14 +168,16 @@
 
 
         #meny{
-            background-color: snow;
-            position: absolute;
-            width: 300px;
-            min-height: calc(100vh - 154px);
-            left: -308px;
-            top: 100px;
-            transition: 0.3s;
-        }
+             background-color: snow;
+             position: absolute;
+             width: 300px;
+             min-height: calc(100vh - 154px);
+             left: -308px;
+             top: 100px;
+             transition: 0.3s;
+         }
+
+
         #cb:checked ~ #meny {
             left: 0;
 
@@ -190,7 +192,7 @@
         }
 
         #cb:checked ~ #mat > div:nth-child(2){
-            opacity:0
+            opacity:0;
         }
 
 
@@ -202,6 +204,83 @@
             display: none;
         }
 
+
+
+
+
+
+        /*Innhold setup*/
+
+
+
+        #mat_setup{
+
+            width: 45%;
+            padding-right: 20px;
+            padding-left: 20px;
+            padding-bottom: 20px;
+            height: 600px;
+
+            float: left;
+            display: grid;
+            /*grid-template-columns: repeat(4,1fr);*/
+         }
+
+        #mat_boks{
+            width: 98%;
+            padding-bottom: 32px;
+        }
+
+        #mat_boks > p {
+            padding: 4px;
+        }
+
+        #mat_boks > img {
+            max-height:360px;
+            max-width: 95%;
+            padding: 12px;
+        }
+
+
+
+        @media (max-width: 480px) {
+
+            main{
+                overflow: hidden;
+                margin: 0 auto;
+                background-color: #f9f9f9;
+                width: 100%;
+                min-height: 100vh;
+            }
+
+            header > nav > article {
+                margin-left: 35%;
+            }
+
+            #meny {
+                background-color: snow;
+                position: absolute;
+                width: 300px;
+                min-height: calc(100vh - 154px);
+                left: -308px;
+                top: 70px;
+                transition: 0.3s;
+            }
+
+
+            #mat_setup{
+
+                width: 95%;
+                padding-right: 20px;
+                padding-bottom: 20px;
+                height: 600px;
+
+                float: left;
+                display: grid;
+                /*grid-template-columns: repeat(2,1fr);*/
+            }
+
+        }
 
 
     </style>
@@ -232,11 +311,11 @@
         </label>
         <nav id="meny">
             <button onclick="visAlleVarer()">Meny</button>
-            <button onclick="visVare()">Sunt</button>
-            <button>Vegetar</button>
-            <button>Bestilling</button>
-            <button>Tilbakestill Bestilling</button>
-        </nav>
+            <button onclick="visSunn()">Sunt</button>
+            <button onclick="visVegetarisk()">Vegetar</button>
+            <button onclick="showMeat()">Kjøttretter</button>
+            <button onclick="billigste()">Billigste</button>
+
     </header>
 
 
@@ -303,21 +382,27 @@
 
     <script>
 
+
         const db = firebase.database();
 
         const alleVarer = document.getElementById("alleVarer");
-        const matretter = db.ref("Varer/matretter");
+        const matretter = db.ref("varer/matretter");
 
 
-        function visVare(snapshot){
+        function visVare(snapshot) {
 
             const matrett = snapshot.val();
             alleVarer.innerHTML += `
 
-                <div>
-                    <article id="dasEssen">
+                <div id="mat_setup">
+                    <article id="mat_boks">
                         <img src="${matrett.bilde}" alt="">
                         <h1>${matrett.navn}</h1>
+                        <p>Ingredienser: ${matrett.ingredienser}</p>
+                        <p>Type: ${matrett.type}</p>
+                        <p>Vegetarisk: ${matrett.vegetarian}</p>
+                        <p>Sunn: ${matrett.sunn}</p>
+                        <p>Pris: ${matrett.pris}kr</p>
                     </article>
 
                 </div>
@@ -331,46 +416,101 @@
 
 
 
+
         function visAlleVarer() {
+            alleVarer.innerHTML = "";
             matretter.on("child_added", visVare);
         }
 
 
         visAlleVarer();
 
-    </script>
+        
+
+
+        function visVegetarisk() {
+
+            alleVarer.innerHTML = "";
+
+            matretter
+
+                .orderByChild("vegetarian")
+                .equalTo(true)
+                .on("child_added", visVare);
+        }
 
 
 
-    <!--Gir sliders en funksjon-->
+        function visSunn() {
 
-    <script>
+            alleVarer.innerHTML = "";
+
+            matretter
+
+                .orderByChild("sunn")
+                .equalTo(true)
+                .on("child_added", visVare);
+        }
+
+
+
+
+
+        function billigste() {
+
+            alleVarer.innerHTML = "";
+
+
+            matretter
+
+                .orderByChild("pris")
+                .on("child_added", visVare);
+        }
+
+
+
+
+      function showMeat() {
+
+          alleVarer.innerHTML = "";
+
+          matretter
+
+              .orderByChild("vegetarian")
+              .equalTo(false)
+              .on("child_added", visVare);
+      }
+
+
+
+
+
         let Sliders = document.querySelector(".Sliders");
 
-        let marg= 0;
+        let marg = 0;
 
         document.onclick = function (klikkerino) {
 
 
-            if(klikkerino.clientX > innerWidth / 2){
-                if(marg > -300){
+            if (klikkerino.clientX > innerWidth / 2) {
+                if (marg > -300) {
                     marg = marg - 100;
-                } else{
+                } else {
                     Sliders.animate([
                         {transform: "translateX(20px;"},
                         {transform: "translateX(0px;"},
                         {transform: "translateX(10px;"},
                         {transform: "translateX(0px;"}
-                    ],{
-                        duration : 200
+                    ], {
+                        duration: 200
                     })
                 }
 
-            } else{
+            } else {
 
-                if(marg < 0){
+                if (marg < 0) {
                     marg = marg + 100;
-                } else{
+                } else {
                     slides.animate([
                         {transform: "translateX(-20px;)"},
                         {transform: "translateX(0;)"},
@@ -386,12 +526,6 @@
             Sliders.style.marginLeft = marg + "%";
         };
     </script>
-
-
-
-
-    <!--Importerer Json-->
-
 
 
 </body>
