@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stemmernokfortdetja</title>
+    <style>
+
+        #eid{
+            width: 700px;
+            height: 700px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+
+    <canvas id="eid"></canvas>
+
+
+
+
+<script>
+
+    let eid = document.getElementById("eid");
+    let ctx = eid.getContext("2d");
+
+    let yposisjon1 = 0;
+
+    ctx.moveTo(0,0);
+    ctx.lineTo(700,0);
+
+
+    while (yposisjon1 <= 700){
+        ctx.lineWidth = 10;
+
+        yposisjon1 = yposisjon1 + 10;
+
+        ctx.moveTo(0, yposisjon1);
+        ctx.lineTo(700, yposisjon1);
+
+        ctx.strokeStyle = "blue";
+        ctx.stroke();
+
+    }
+
+
+</script>
+</body>
+</html>
