@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mal</title>
+    <style>
+
+        #MONNI{
+
+            font-size: 50px;
+        }
+
+        #artikkern{
+
+            margin: 8px;
+        }
+
+        #transaksjonshistorie{
+
+            margin-left: 8px;
+            margin-top: 40px;
+        }
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+
+
+    <article id="artikkern">
+
+        <div id="MONNI"></div>
+
+
+        <input type="number" id="BK" placeholder="kr">
+
+        <br>
+
+        <br>
+
+        <button id="leggTil">Legg til beløp</button>
+
+        <button id="trekkFra">Trekk fra beløp</button>
+
+
+
+    </article>
+
+
+
+    <article id="transaksjonshistorie">
+
+
+        <h1>Transaksjonshistorie</h1>
+
+
+        <ul id="transaksjonsliste">
+
+
+        </ul>
+
+
+    </article>
+
+
+
+
+
+    <script>
+
+        //BASTAIN  1
+
+        let MONNI = document.getElementById("MONNI");
+        let BK = document.getElementById("BK");
+        let leggTil = document.getElementById("leggTil");
+        let trekkFra = document.getElementById("trekkFra");
+
+
+
+
+        let sum = 0;
+
+        MONNI.innerHTML = sum;
+
+        //-BASTAIN  1
+
+        //SELLEBAN  1
+
+        const transaksjonsliste = document.querySelector("#transaksjonsliste");
+
+        const transaksjoner = [];
+
+        //-SELLEBAN  1
+
+
+        //SELLEBAN  2
+
+        const merMONNI = () => {
+
+
+            transaksjonsliste.innerHTML = "";
+            for(const transaksjon of transaksjoner) {
+
+                transaksjonsliste.innerHTML += `
+            <li>
+                ${transaksjon} kr satt inn
+            </li>
+            <br>
+        `;
+
+            }
+
+        };
+
+        //-SELLEBAN  2
+
+
+        //SELLEBAN  3
+
+        const mindreMONNI = () => {
+
+
+            transaksjonsliste.innerHTML = "";
+            for(const transaksjon of transaksjoner) {
+
+                transaksjonsliste.innerHTML += `
+            <li>
+                ${transaksjon} kr tatt ut
+            </li>
+            <br>
+        `;
+
+            }
+
+        };
+
+        //-SELLEBAN  3
+
+
+        //BASTIAN  2
+        leggTil.onclick = () =>{
+
+
+            sum = sum + Number(BK.value);
+
+            MONNI.innerHTML = "Beløp: " + sum + " kr";
+
+        //-BASTIAN  2
+
+
+        //SELLEBAN  4
+
+            transaksjoner.unshift(BK.value);
+
+            merMONNI();
+
+        //SELLEBAN  4
+
+        //BASTIAN  3
+
+            BK.value = "";
+        };
+
+        //-BASTIAN 3
+
+        //BASTIAN  4
+
+        trekkFra.onclick = () =>{
+
+
+            sum = sum - Number(BK.value);
+
+            MONNI.innerHTML = "Beløp: " + sum + " kr";
+
+
+        //-BASTIAN  4
+
+        //SELLEBAN  5
+
+            transaksjoner.unshift(BK.value);
+
+            mindreMONNI();
+
+        //-SELLEBAN  5
+
+        //BASTIAN  5
+            BK.value = "";
+        };
+
+        //-BASTIAN  5
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+</body>
+</html>
