@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mal</title>
+    <style>
+
+        #MONNI{
+
+            font-size: 50px;
+        }
+
+        #artikkern{
+
+            margin: 8px;
+        }
+
+        #transaksjonshistorie{
+
+            margin-left: 8px;
+            margin-top: 40px;
+        }
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+
+
+<article id="artikkern">
+
+    <div id="MONNI"></div>
+
+
+    <input type="number" id="BK" placeholder="kr">
+
+    <br>
+
+    <br>
+
+    <button id="leggTil">Legg til beløp</button>
+
+    <button id="trekkFra">Trekk fra beløp</button>
+
+
+
+</article>
+
+
+
+<article id="transaksjonshistorie">
+
+
+    <h1>Transaksjonshistorie</h1>
+
+
+    <ul id="transaksjonsliste">
+
+
+    </ul>
+
+
+</article>
+
+
+
+
+
+<script>
+
+
+
+    let MONNI = document.getElementById("MONNI");
+    let BK = document.getElementById("BK");
+    let leggTil = document.getElementById("leggTil");
+    let trekkFra = document.getElementById("trekkFra");
+
+
+
+
+    let sum = 0;
+
+    MONNI.innerHTML = sum;
+
+
+
+    const transaksjonsliste = document.querySelector("#transaksjonsliste");
+
+    const transaksjoner = [];
+
+
+
+    const merMONNI = () => {
+
+
+        transaksjonsliste.innerHTML = "";
+        for(const transaksjon of transaksjoner) {
+
+            transaksjonsliste.innerHTML += `
+            <li>
+                ${transaksjon}
+            </li>
+            <br>
+        `;
+
+        }
+
+    };
+
+
+
+    const mindreMONNI = () => {
+
+
+        transaksjonsliste.innerHTML = "";
+        for(const transaksjon of transaksjoner) {
+
+            transaksjonsliste.innerHTML += `
+            <li>
+                ${transaksjon}
+            </li>
+            <br>
+        `;
+
+        }
+
+    };
+
+
+    leggTil.onclick = () => {
+
+
+        sum = sum + Number(BK.value);
+
+        MONNI.innerHTML = "Beløp: " + sum + " kr";
+
+        transaksjoner.unshift(BK.value + " kr satt inn");
+
+        merMONNI();
+
+        BK.value = "";
+    };
+
+
+
+    trekkFra.onclick = () => {
+
+
+        sum = sum - Number(BK.value);
+
+        MONNI.innerHTML = "Beløp: " + sum + " kr";
+
+        transaksjoner.unshift(BK.value + " kr tatt ut");
+
+        mindreMONNI();
+
+        BK.value = "";
+    };
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
