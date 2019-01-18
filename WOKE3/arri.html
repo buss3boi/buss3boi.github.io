@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+    <ul id="filmList">
+
+
+
+
+    </ul>
+
+
+<script>
+
+
+    let filmList = document.querySelector("#filmList");
+    let inputs = document.querySelectorAll("input");
+
+
+
+
+
+
+    let filmer = ["Ben Hur", "Shawshank Redemption", "Star Wars", "Nikkas", "RN BOYS"];
+
+    /*for (let i = 0; i< filmer.length; i++){
+        document.write(filmer[i])
+    }*/
+
+
+    for (let film of filmer){
+        filmList.innerHTML += `<li>${film}</li>`;
+    }
+
+
+
+
+
+
+    //How to array
+
+
+    filmer.push("Selleban Farah"); //Legger til bak
+    filmer.unshift("Hawai Oslo");  //Leffer til foran
+    filmer.pop(); //Fjerner bak
+    filmer.shift();   //Fjerner foran
+    filmer.splice(3,24); //Fra hvor begynner å fjerne, og hvor mange plasser frem
+    filmer.splice(2,2,"Life of Brian", "Ali G"); //Fjerner fra x, y skritt, og legger til z og w i stedet
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

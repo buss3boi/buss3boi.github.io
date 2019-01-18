@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        #bilder{
+            max-height: 500px;
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <button id="n">ø</button>
+    <button id="q">l</button>
+
+    <article id="pls"><img id="bilder" src="" ></article>
+
+
+<script>
+
+
+
+    let n = document.querySelector("#n");
+
+    let q = document.querySelector("#q");
+
+
+
+
+    let feriebilder = ["bilder/49213445_1481956655276840_6685577566473945088_n.jpg", "bilder/50003298_2373804189570118_2433643557857263616_n.jpg",
+    "bilder/50027912_2069447423142723_4003816578310209536_o.jpg", "bilder/50269254_409211522955286_6187623825589403648_o.jpg",
+    "bilder/50527413_1468146936651409_7873319139748610048_n.jpg", "bilder/50565967_2235402206674825_8011180078052409344_o.jpg"];
+
+
+    function alfabetisk(string1,string2){
+        string1 = string1.toLowerCase();
+        string2 = string2.toLowerCase();
+
+        if(string1 <= string2){
+            return -1;
+        }
+    }
+
+
+    let p = 0;
+
+
+
+
+    feriebilder.sort(alfabetisk);
+
+
+
+    n.onclick = () =>{
+
+        p = p + 1;
+
+        if(p > 5){
+
+            p = 0
+        }
+
+        bilder.src = feriebilder[p];
+
+    };
+
+    q.onclick = () =>{
+
+        p = p - 1;
+
+        if(p < 0){
+
+            p = 5;
+        }
+
+        bilder.src = feriebilder[p];
+
+
+    }
+
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>

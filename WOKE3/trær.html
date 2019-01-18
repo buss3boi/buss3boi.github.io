@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tre</title>
+</head>
+<body>
+
+
+    <script>
+
+
+        let trer = ["lønn", "hassel", "bjørk", "eik", "blodlønn", "furu", "gran"];
+
+        trer.splice(1,1);
+
+        trer.splice(1,1, "hengebjørk");
+
+        trer.pop();
+
+        trer.pop();
+
+        trer.push("fjellbjørk", "dvergbjørk");
+
+        trer.sort();
+
+
+
+        function alfabetisk(string1,string2){
+            string1 = string1.toLowerCase();
+            string2 = string2.toLowerCase();
+
+            if(string1 <= string2){
+                return -1;
+            }else{
+                return 1;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        document.write(trer);
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+
+<select  name="stfu" id="drop">
+
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="mercedes">Mercedes</option>
+    <option value="audi">Audi</option>
+
+</select>
+
+
+<input type="text" placeholder="Skriv ned biler">
+
+
+
+<h2>The cars</h2>
+
+<ul id="bilListe">
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+
+    let valg = document.querySelectorAll("option");
+    let drop = document.querySelectorAll("#drop");
+
+    let bilListe = document.querySelectorAll("#bilListe");
+
+    let felt = document.querySelectorAll("input");
+
+
+    let cars = [];
+
+
+    bilListe.innerHTML = cars.value;
+
+
+
+    drop.onchange = function () {
+
+        for (bil of valg){
+            if(bil.selected){
+
+                cars.unshift(drop.value);
+
+                bilListe.innerHTML = cars.value;
+
+                /*if(bil.value === "Volvo"){
+                }*/
+            }
+        }
+    }
+
+
+
+
+</script>
+
+</body>
+</html>
