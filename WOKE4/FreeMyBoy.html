@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>He Didnt Do nuthin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-float.css">
+    <style>
+
+        main{
+            max-width: 900px;
+            margin: auto;
+            padding: 10px;
+            background-color: whitesmoke;
+        }
+
+        body{
+            background-color: slategray;
+        }
+
+        h1{
+            text-align: center;
+            color: midnightblue;;
+        }
+
+        #inpTekst{
+            background-color: palevioletred;
+            font-size: 2rem;
+            padding: 4px;
+        }
+
+        #gangNigger{
+
+            background-color: palevioletred;
+            font-size: 2rem;
+            padding: 4px;
+
+        }
+
+        #rert{
+
+            margin-left: 38%;
+            background-color: snow;
+            border-radius: 1%;
+            border: 2px solid lightskyblue;
+            height: 28px;
+            width:200px;
+
+        }
+
+        #gjørliste > article{
+            display: grid;
+            grid-template-columns: 1fr auto;
+        }
+
+        .lblSlett{
+            padding-right: bitch;
+            font-weight: bold;
+            padding-left: h;
+            opacity: 0.4;
+        }
+
+        .lblSlett:hover{
+            opacity: 1;
+            transition: 0.2s;
+        }
+    </style>
+</head>
+<body>
+
+
+<main>
+
+    <h1>Kannst du mich hilfen?</h1>
+    <input type="text" id="inpTekst" placeholder="Ditt Navn" autofocus required>
+    <input type="text" id="gangNigger" placeholder="Spør Thor C" autofocus required>
+    <button id="rert">Klikk hvis retard</button>
+
+    <section id="gjørliste">
+
+
+
+    </section>
+
+</main>
+
+
+<script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyC05Asp2auLp_DKq4R6omxvJO5xsJQcdqw",
+        authDomain: "my-decent-project-6d912.firebaseapp.com",
+        databaseURL: "https://my-decent-project-6d912.firebaseio.com",
+        projectId: "my-decent-project-6d912",
+        storageBucket: "my-decent-project-6d912.appspot.com",
+        messagingSenderId: "1049459147850"
+    };
+    firebase.initializeApp(config);
+</script>
+
+
+<script>
+
+
+    const inpTekst = document.getElementById("inpTekst");
+    const gjørliste= document.getElementById("gjørliste");
+    const gangNigger = document.getElementById("gangNigger");
+    const rert = document.getElementById("rert");
+
+
+    const db = firebase.database();
+    const gjøremål = db.ref("gjøremål");
+
+    rert.onclick = function (){
+
+        if (gangNigger.value !== "" && inpTekst.value !== "") {
+            gjøremål.push({
+                tekst: "<b>Navn:</b> " + inpTekst.value + " <b>Problem?:</b> " + gangNigger.value,
+                done: false
+            });
+            inpTekst.value = "";
+            gangNigger.value = "";
+        }
+    };
+
+    function slett(key){
+        const gjør = gjøremål.child(key);
+        gjør.remove();
+        const gjørSomSlettes = document.getElementById(key);
+        gjørliste.removeChild(gjørSomSlettes);
+    }
+
+    function visGjør(snap){
+        const gjør = snap.val();
+        const key = snap.key;
+        gjørliste.innerHTML +=`
+             <article id="${key}">
+
+                <label>${gjør.tekst}</label>
+                <Label class="lblSlett" onclick="slett('${key}')">Kys yourself</Label>
+            </article>`;
+    }
+
+
+    //rert.onclick = lagreGjør();
+    /*inpTekst.onchange = lagreGjør;*/
+    gjøremål.on("child_added", visGjør);
+
+
+</script>
+
+</body>
+</html>
