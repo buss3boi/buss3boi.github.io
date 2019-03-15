@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Atari</title>
+    <style>
+
+        #canvas{
+
+            border: 20px solid navy;
+            width: 95%;
+            margin-left: 1.1111%;
+
+        }
+
+        #divPoeng{
+
+            background-color: navy;
+            height: 30px;
+            width: 95%;
+            line-height: 30px;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin-left: 1.1111%;
+        }
+
+        #vPoeng{
+            font-size: 20px;
+            font-family: arial;
+            color: white;
+            margin:0;
+        }
+
+
+        #vPoeng{
+            float:right;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="divPoeng">
+        <h1 id="vPoeng">Poeng:0</h1>
+    </div>
+
+
+    <canvas width="600px" height="275px" id="canvas"></canvas>
+
+
+
+    <script>
+
+        let canvas = document.querySelector("#canvas");
+
+        let ctx = canvas.getContext("2d");
+        let gameOn = true;
+
+
+        let sphere = {
+
+            radius: 4,
+            xp: 100,
+            yp: 100,
+            farge: "purple",
+            xd: -1,
+            yd: 1,
+            xs: 2.7,
+            ys: 2.7
+        };
+
+        let Area = {
+
+            bredde: canvas.width,
+            lengde: canvas.height,
+            gressfarge: "Black",
+            linjefarge: "White",
+            linjetykkelse: 4
+        };
+
+        let paddle = {
+
+            "bredde": 75,
+            "lengde": 10,
+            "farge": "Darkgray",
+            "xp": Area.bredde - 15,
+            "yp": Area.lengde/2,
+            "xd": 0,
+            "xs": 5
+        };
+
+        function Dsphere() {
+
+            ctx.beginPath();
+            ctx.arc(sphere.xp,sphere.yp,sphere.radius,0, Math.PI*2);
+            ctx.fillStyle = sphere.farge;
+            ctx.fill();
+            ctx.closePath();
+            sphere.xp = sphere.xp + sphere.xs*sphere.xd;
+            sphere.yp = sphere.yp + sphere.ys*sphere.yd;
+        }
+
+
+        function lagArea() {
+
+            ctx.fillStyle = Area.gressfarge;
+            ctx.fillRect(0,0,Area.bredde,Area.lengde);
+
+
+        }
+
+        function wallCollision() {
+
+            if (sphere.xp <= sphere.radius){
+                sphere.xd = 1;
+            }
+            if (sphere.yp <= sphere.radius){
+                sphere.yd = 1;
+            }
+            if (sphere.yp + sphere.radius >= Area.lengde){ //Bare drit, fjern senere
+                sphere.yd = -1;
+            }
+            if (sphere.xp + sphere.radius >= Area.bredde){
+                sphere.xd = -1;
+            }
+        }
+
+        function assignPaddle() {
+
+            ctx.beginPath();
+            ctx.rect(paddle.xp, canvas.lengde-paddle.lengde, paddle.bredde, paddle.lengde);
+            ctx.fillStyle = paddle.farge;
+            ctx.fill();
+            ctx.closePath();
+
+        }
+
+
+
+        function outArea() {
+
+            if(sphere.ypos > Area.lengde + sphere.radius*2){
+                gameOn = false;
+            }
+
+        }
+
+
+        function gameLoop() {
+
+            lagArea();
+            Dsphere();
+            wallCollision();
+
+
+
+            outArea();
+
+            if(gameOn){
+                requestAnimationFrame(gameLoop);
+            }
+        }
+
+        gameLoop();
+
+
+    </script>
+
+</body>
+</html>
