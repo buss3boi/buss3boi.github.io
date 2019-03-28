@@ -13,7 +13,7 @@
 
         }
 
-        #divPoeng{
+        #divScore{
 
             background-color: navy;
             height: 30px;
@@ -24,49 +24,94 @@
             margin-left: 1.1111%;
         }
 
-        #vPoeng{
+        #vScore{
             font-size: 20px;
             font-family: arial;
             color: white;
             margin:0;
-        }
-
-
-        #vPoeng{
             float:right;
         }
+
+        #musikk{
+            background-color: lightskyblue;
+            font-size: 18px;
+            font-family: arial;
+            color: white;
+            margin:0;
+
+        }
+
+
+
 
     </style>
 </head>
 <body>
 
-    <div id="divPoeng">
-        <h1 id="vPoeng">Poeng:0</h1>
+    <div id="divScore">
+        <button id="musikk">Click Me!</button>
+        <h1 id="vScore">Score: 0</h1>
     </div>
 
 
     <canvas width="600px" height="275px" id="canvas"></canvas>
 
+    <audio id="TXX" src="lyd/20XX%20OST%20-%20Frostor%20Datacenter%20%5BPermafrost%5D.mp3"></audio>
+
 
 
     <script>
 
-        let canvas = document.querySelector("#canvas");
+        let musikk = document.querySelector("#musikk");
+        let TXX = document.querySelector("TXX");
 
+        let canvas = document.querySelector("#canvas");
         let ctx = canvas.getContext("2d");
         let gameOn = true;
+
+        let vScore = document.querySelector("#vScore");
+        let poenga = 0;
+
+        let imageArray = ["images/2.jpg",
+            "images/3.jpg",
+            "images/4.jpg",
+            "images/5.jpg",
+            "images/6.jpg",
+            "images/7.jpg",
+            "images/8.png",
+            "images/9.jpg",
+            "images/10.jpg",
+            "images/11.jpg",
+            "images/12.png",
+            "images/13.jpg",
+            "images/14.jpg",
+            "images/15.jpg",
+            "images/16.jpg",
+            "images/cool.jpg"];
+
+        function getRandomImage(imgAr, path) {
+            path = path || 'images/'; // default path here
+            let num = Math.floor(Math.random() * imgAr.length);
+            let img = imgAr[num];
+            let imgStr = '<img src="' + path + img + '" alt = "">';
+            document.write(imgStr);
+            document.close();
+
+        }
+
+
 
 
         let sphere = {
 
             radius: 4,
-            xp: 100,
-            yp: 100,
+            xp: 350,
+            yp: 280,
             farge: "purple",
-            xd: -1,
-            yd: 1,
-            xs: 2.7,
-            ys: 2.7
+            xd: -0.1,
+            yd: -0.430,
+            xs: 2,
+            ys: 2
         };
 
         let Area = {
@@ -78,16 +123,76 @@
             linjetykkelse: 4
         };
 
-        let paddle = {
+        let paddle1 = {
 
-            "bredde": 75,
+            "bredde": 25,
             "lengde": 10,
-            "farge": "Darkgray",
-            "xp": Area.bredde - 15,
-            "yp": Area.lengde/2,
+            "farge": "Aqua",
+            "xp": Area.bredde - 50,
+            "yp": Area.lengde/1.03,
             "xd": 0,
-            "xs": 5
+            "xs": 7
         };
+
+        let paddle2 = {
+
+            "bredde": 25,
+            "lengde": 10,
+            "farge": "Aqua",
+            "xp": Area.bredde - 75,
+            "yp": Area.lengde/1.03,
+            "xd": 0,
+            "xs": 7
+        };
+
+        let paddle3 = {
+
+            "bredde": 25,
+            "lengde": 10,
+            "farge": "Aqua",
+            "xp": Area.bredde -25,
+            "yp": Area.lengde/1.03,
+            "xd": 0,
+            "xs": 7
+        };
+
+        let paddle4 = {
+
+            "bredde": 25,
+            "lengde": 10,
+            "farge": "Aqua",
+            "xp": Area.bredde - 100,
+            "yp": Area.lengde / 1.03,
+            "xd": 0,
+            "xs": 7
+        };
+
+        let brick = {
+
+            rowCount: 5,
+            columnCount: 10,
+            width: 55,
+            height: 25,
+            padding: 5,
+            marginTop: 30,
+            marginLeft: 3
+
+        };
+
+        let bricks = [];
+        for (let K = 0; K < brick.columnCount; K++) {
+            bricks[K] = [];
+
+            for (let R = 0; R < brick.rowCount; R++) {
+                bricks[K][R] = { x: 0, y: 0 , status: 1};
+            }
+        }
+
+
+        musikk.onclick = function () {
+            TXX.play();
+        };
+
 
         function Dsphere() {
 
@@ -112,35 +217,176 @@
         function wallCollision() {
 
             if (sphere.xp <= sphere.radius){
-                sphere.xd = 1;
+                sphere.xd = -1*sphere.xd;
             }
             if (sphere.yp <= sphere.radius){
-                sphere.yd = 1;
-            }
-            if (sphere.yp + sphere.radius >= Area.lengde){ //Bare drit, fjern senere
-                sphere.yd = -1;
+                sphere.yd = -1*sphere.yd;
             }
             if (sphere.xp + sphere.radius >= Area.bredde){
-                sphere.xd = -1;
+                sphere.xd = -1*sphere.xd;
             }
         }
 
         function assignPaddle() {
 
-            ctx.beginPath();
-            ctx.rect(paddle.xp, canvas.lengde-paddle.lengde, paddle.bredde, paddle.lengde);
-            ctx.fillStyle = paddle.farge;
-            ctx.fill();
-            ctx.closePath();
+            ctx.fillStyle = paddle1.farge;
+            ctx.fillStyle = paddle2.farge;
+            ctx.fillStyle = paddle3.farge;
+            ctx.fillStyle = paddle4.farge;
+
+            ctx.fillRect(paddle1.xp,paddle1.yp,paddle1.bredde,paddle1.lengde);
+            ctx.fillRect(paddle2.xp,paddle2.yp,paddle2.bredde,paddle2.lengde);
+            ctx.fillRect(paddle3.xp,paddle3.yp,paddle3.bredde,paddle3.lengde);
+            ctx.fillRect(paddle4.xp,paddle4.yp,paddle4.bredde,paddle4.lengde);
+
+            if(paddle4.xp <= 0 && paddle4.xd === -1){
+                return;
+            }
+            if(paddle3.xp + paddle3.bredde >= Area.bredde && paddle3.xd === 1){
+                return;
+            }
+            paddle1.xp = paddle1.xp + (paddle1.xs*paddle1.xd);
+            paddle2.xp = paddle2.xp + (paddle2.xs*paddle2.xd);
+            paddle3.xp = paddle3.xp + (paddle3.xs*paddle3.xd);
+            paddle4.xp = paddle4.xp + (paddle4.xs*paddle4.xd);
 
         }
+        
+        function paddle1Hit() {
+
+            let tilVenstre = sphere.xp + sphere.radius < paddle1.xp;
+            let tilHoyre = sphere.xp - sphere.radius > paddle1.xp + paddle1.bredde;
+            let erOver = sphere.yp + sphere.radius < paddle1.yp;
+            let erUnder = sphere.yp - sphere.radius > sphere.yp + paddle1.lengde;
+            if(!tilVenstre && !tilHoyre && !erOver && !erUnder) {
+                sphere.yd = -1;
+                sphere.xd = 1;
+            }
+        }
+        
+        function paddle2Hit(){
+
+            let tilVenstre = sphere.xp + sphere.radius < paddle2.xp;
+            let tilHoyre = sphere.xp - sphere.radius > paddle2.xp + paddle2.bredde;
+            let erOver = sphere.yp + sphere.radius < paddle2.yp;
+            let erUnder = sphere.yp - sphere.radius > sphere.yp + paddle2.lengde;
+            if(!tilVenstre && !tilHoyre && !erOver && !erUnder) {
+                sphere.yd = -1;
+                sphere.xd = -1;
+            }
+        }
+        
+        function paddle3Hit() {
+
+            let tilVenstre = sphere.xp + sphere.radius < paddle3.xp;
+            let tilHoyre = sphere.xp - sphere.radius > paddle3.xp + paddle3.bredde;
+            let erOver = sphere.yp + sphere.radius < paddle3.yp;
+            let erUnder = sphere.yp - sphere.radius > sphere.yp + paddle3.lengde;
+            if(!tilVenstre && !tilHoyre && !erOver && !erUnder) {
+                sphere.yd = -1;
+                sphere.xd = 1.3;
+            }
+        }
+        
+        function paddle4Hit() {
+
+            let tilVenstre = sphere.xp + sphere.radius < paddle4.xp;
+            let tilHoyre = sphere.xp - sphere.radius > paddle4.xp + paddle4.bredde;
+            let erOver = sphere.yp + sphere.radius < paddle4.yp;
+            let erUnder = sphere.yp - sphere.radius > sphere.yp + paddle4.lengde;
+            if(!tilVenstre && !tilHoyre && !erOver && !erUnder) {
+                sphere.yd = -1;
+                sphere.xd = -1.3;
+            }
+        }
+
+        function clearDocument() {
+
+            document.body.innerHTML = "";
+            getRandomImage(imageArray);
+        }
+
+
+        
+        function lagBricks() {
+
+            for (let K = 0; K < brick.columnCount; K++){
+                for (let R = 0; R < brick.rowCount; R++){
+                    if(bricks[K][R].status == 1){
+                        let bx = (K*(brick.width + brick.padding)) + brick.marginLeft;
+                        let by = (R*(brick.height + brick.padding)) + brick.marginTop;
+
+                        bricks[K][R].x = bx;
+                        bricks[K][R].y = by;
+                        ctx.beginPath();
+                        ctx.rect(bx, by, brick.width, brick.height);
+                        ctx.fillStyle = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
+                        ctx.fill();
+                        ctx.closePath();
+
+                        if(poenga < 750){
+                            vScore.innerHTML = "Score: " + poenga;
+                        }else if(poenga = 750){
+                            vScore.innerHTML = "Gratulerer! Du har vunnet!";
+                            setTimeout(clearDocument, 1500);
+                        }
+
+                        let diff = 2.6;
+
+
+                        if (bricks[K][R].status == 1){
+
+                            if (sphere.xp + sphere.radius > bx - diff && sphere.yp + sphere.radius > by - diff
+                                && sphere.xp - sphere.radius < bx + brick.width + diff && sphere.yp - sphere.radius < by + brick.height + diff) {
+
+                                poenga = poenga + 15;
+
+                                if (sphere.xp + sphere.radius + diff > bx && sphere.yp + sphere.radius > by
+                                    && sphere.xp - sphere.radius - diff < bx + brick.width && sphere.yp - sphere.radius - diff < by + brick.height) {
+                                    //Overside
+                                    sphere.yd = -sphere.yd;
+                                    sphere.xd =  1.2*sphere.xd;
+                                    bricks[K][R].status = 0;
+                                }
+                                if (sphere.xp + sphere.radius + diff > bx && sphere.yp + sphere.radius + diff > by
+                                    && sphere.xp - sphere.radius - diff < bx + brick.width && sphere.yp - sphere.radius < by + brick.height) {
+                                    //Underside
+                                    sphere.yd = -sphere.yd;
+                                    sphere.xd =  1.2*sphere.xd;
+                                    bricks[K][R].status = 0;
+                                }
+                                if (sphere.xp + sphere.radius > bx && sphere.yp + sphere.radius + diff > by
+                                    && sphere.xp - sphere.radius - diff < bx + brick.width && sphere.yp - sphere.radius - diff < by + brick.height) {
+                                    //Venstre
+                                    sphere.xd = -sphere.xd;
+                                    sphere.yd =  1.2*sphere.yd;
+                                    bricks[K][R].status = 0;
+                                }
+                                if (sphere.xp + sphere.radius + diff > bx && sphere.yp + sphere.radius + diff > by
+                                   && sphere.xp - sphere.radius < bx + brick.width && sphere.yp - sphere.radius - diff < by + brick.height) {
+                                    //Høyre
+                                    sphere.xd = -sphere.xd;
+                                    sphere.yd =  1.2*sphere.yd;
+                                    bricks[K][R].status = 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+
 
 
 
         function outArea() {
 
-            if(sphere.ypos > Area.lengde + sphere.radius*2){
+            if(sphere.yp > Area.lengde + sphere.radius*2){
                 gameOn = false;
+                vScore.innerHTML = "GAME OVER";
             }
 
         }
@@ -151,11 +397,14 @@
             lagArea();
             Dsphere();
             wallCollision();
-
-
+            assignPaddle();
+            paddle1Hit();
+            paddle2Hit();
+            paddle3Hit();
+            paddle4Hit();
+            lagBricks();
 
             outArea();
-
             if(gameOn){
                 requestAnimationFrame(gameLoop);
             }
@@ -164,7 +413,54 @@
         gameLoop();
 
 
+
+        document.onkeydown = function (event) {
+
+
+            if (event.code === "ArrowLeft") {
+                paddle1.xd = -1;
+                paddle2.xd = -1;
+                paddle3.xd = -1;
+                paddle4.xd = -1;
+            }
+            if (event.code === "ArrowRight") {
+                paddle1.xd = 1;
+                paddle2.xd = 1;
+                paddle3.xd = 1;
+                paddle4.xd = 1;
+            }
+        };
+
+
+        document.onkeyup = function (event) {
+
+
+            if(event.code === "ArrowLeft" && paddle1.xd === -1 && paddle2.xd === -1 && paddle3.xd === -1 && paddle4.xd === -1){
+                paddle1.xd = 0;
+                paddle2.xd = 0;
+                paddle3.xd = 0;
+                paddle4.xd = 0;
+            }
+            if(event.code === "ArrowRight" && paddle1.xd === 1 && paddle2.xd === 1 && paddle3.xd === 1 && paddle4.xd === 1){
+                paddle1.xd = 0;
+                paddle2.xd = 0;
+                paddle3.xd = 0;
+                paddle4.xd = 0;
+            }
+        };
+
+
     </script>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+

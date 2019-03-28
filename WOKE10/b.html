@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<script>
+
+    let imageArray = ["images/2.jpg",
+        "images/3.jpg",
+        "images/4.jpg",
+        "images/5.jpg",
+        "images/6.jpg",
+        "images/7.jpg",
+        "images/8.png",
+        "images/9.jpg",
+        "images/10.jpg",
+        "images/11.jpg",
+        "images/12.png",
+        "images/13.jpg",
+        "images/14.jpg",
+        "images/15.jpg",
+        "images/16.jpg",
+        "images/cool.jpg"];
+
+    function getRandomImage(imgAr, path) {
+        path = path || 'images/'; // default path here
+        var num = Math.floor( Math.random() * imgAr.length );
+        var img = imgAr[ num ];
+        var imgStr = '<img src="' + path + img + '" alt = "">';
+        document.write(imgStr); document.close();
+    }
+
+    getRandomImage(imageArray, '/images/');
+
+
+
+</script>
+
+</body>
+</html>
