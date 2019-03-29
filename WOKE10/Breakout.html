@@ -63,7 +63,7 @@
     <script>
 
         let musikk = document.querySelector("#musikk");
-        let TXX = document.querySelector("TXX");
+        let TXX = document.querySelector("#TXX");
 
         let canvas = document.querySelector("#canvas");
         let ctx = canvas.getContext("2d");
@@ -105,13 +105,13 @@
         let sphere = {
 
             radius: 4,
-            xp: 350,
+            xp: 347,
             yp: 280,
             farge: "purple",
             xd: -0.1,
             yd: -0.430,
-            xs: 2,
-            ys: 2
+            xs: 1.75,
+            ys: 1.75
         };
 
         let Area = {
@@ -326,7 +326,7 @@
 
                         if(poenga < 750){
                             vScore.innerHTML = "Score: " + poenga;
-                        }else if(poenga = 750){
+                        }else if(poenga >= 750){
                             vScore.innerHTML = "Gratulerer! Du har vunnet!";
                             setTimeout(clearDocument, 1500);
                         }
@@ -345,28 +345,28 @@
                                     && sphere.xp - sphere.radius - diff < bx + brick.width && sphere.yp - sphere.radius - diff < by + brick.height) {
                                     //Overside
                                     sphere.yd = -sphere.yd;
-                                    sphere.xd =  1.2*sphere.xd;
+                                    sphere.xd =  1.15*sphere.xd;
                                     bricks[K][R].status = 0;
                                 }
                                 if (sphere.xp + sphere.radius + diff > bx && sphere.yp + sphere.radius + diff > by
                                     && sphere.xp - sphere.radius - diff < bx + brick.width && sphere.yp - sphere.radius < by + brick.height) {
                                     //Underside
                                     sphere.yd = -sphere.yd;
-                                    sphere.xd =  1.2*sphere.xd;
+                                    sphere.xd =  1.15*sphere.xd;
                                     bricks[K][R].status = 0;
                                 }
                                 if (sphere.xp + sphere.radius > bx && sphere.yp + sphere.radius + diff > by
                                     && sphere.xp - sphere.radius - diff < bx + brick.width && sphere.yp - sphere.radius - diff < by + brick.height) {
                                     //Venstre
                                     sphere.xd = -sphere.xd;
-                                    sphere.yd =  1.2*sphere.yd;
+                                    sphere.yd =  1.15*sphere.yd;
                                     bricks[K][R].status = 0;
                                 }
                                 if (sphere.xp + sphere.radius + diff > bx && sphere.yp + sphere.radius + diff > by
                                    && sphere.xp - sphere.radius < bx + brick.width && sphere.yp - sphere.radius - diff < by + brick.height) {
                                     //Høyre
                                     sphere.xd = -sphere.xd;
-                                    sphere.yd =  1.2*sphere.yd;
+                                    sphere.yd =  1.15*sphere.yd;
                                     bricks[K][R].status = 0;
                                 }
                             }
